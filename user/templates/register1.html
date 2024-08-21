@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Регистрация</title>
+
+    </head>
+
+    <body>
+       
+        <div class="main">
+
+            <div class="register-form">
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    <div class="input-field">
+
+                        <input 
+                            type="text"
+                            name="u"
+                            value="{{ username }}" 
+                            placeholder="Ник">
+                        
+                    </div>
+    
+                    <div class="input-field">
+    
+                        <input 
+                            type="text"
+                            name="e" 
+                            placeholder="Электронная почта">
+                        
+                    </div>
+    
+                    <button 
+                        type="button" 
+                        id="continueBtn">Продолжить</button>
+    
+                    <div class="password-form">
+        
+                        <input 
+                            type="password" 
+                            name="p"
+                            id="passwordField" 
+                            placeholder="Пароль">
+        
+                    </div>
+
+                    <button type="submit" id="submitFormBtn">Зарегистрироваться</button>
+
+                </form>
+
+        </div>
+
+    </body>
+    
+</html>

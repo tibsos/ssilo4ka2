@@ -1,0 +1,204 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ссылочка</title>
+
+
+        <script src="{% static 'packages/jquery-3.6.1.min.js' %}"></script>
+
+
+    </head>
+
+    <body>
+
+        <div class="top-nav">
+
+
+
+        </div>
+
+        <div class="main">
+
+            <div class="s1">
+
+                <div class="text1">
+
+                    <h1 id="head1">Вся твоя жизнь в одной ссылке</h1>
+                    <h2 id="head2">Создай свою личную или корпоротивную ссылочку и делись всем, что ты создаешь, курируешь и продаешь.</h2>
+
+                    <div class="reg-process">
+
+                        <span id="usernamePrefill">ssilo4ka.ru/</span>
+
+                        <form method="POST" action="/register">
+
+                            {% csrf_token %}
+
+                            <input 
+                            type="text"
+                            name="u"
+                            id="usernameInput"
+                            placeholder="твоеимя" />
+
+                            <button id="registerBtn" disabled>Создать ссылочку</button>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+                <div class="illustration1"></div>
+
+            </div>
+
+        </div>
+        
+    </body>
+
+    <style>
+
+        @font-face {
+            font-family: Comfortaa;
+            src: url("{% static 'fonts/Comfortaa.ttf' %}");
+        }
+
+        body {
+
+            font-family: Comfortaa;
+
+        }
+
+        .top-nav {
+
+            position: fixed;
+            left: 100px;
+            top: 50px;
+
+            width: calc(100% - 200px);
+            height: 100px;
+
+            background: red;
+            border-radius: 999px;
+            
+            z-index: 3;
+
+        }
+
+        .main {
+
+            position: absolute;
+            left: 0;
+            right: 0;
+
+            width: 100%;
+
+            background-color: rgba(255, 255, 255, 0.3);
+
+            z-index: 2;
+
+            backdrop-filter: blur(100px);
+
+        }
+
+        .s1 {
+
+            position: relative;
+            top: 200px;
+            left: 0;
+
+            width: 100%;
+            height: 1000px;
+
+            background: green;
+
+        }
+
+        .text1 {
+
+            position: relative;
+            
+            width: 60%;
+            height: 1000px;
+
+            padding-left: 50px;
+
+            float: left;
+
+            background: white;
+
+        }
+
+        #head1 {
+
+            font-size: 60px;
+
+        }
+
+        #head2 {
+
+            font-size: 40px;
+            font-weight: normal;
+
+        }
+
+        .illustration1 {
+
+            position: relative;
+            
+            width: 40%;
+            height: 1000px;
+
+            float: right;
+
+            background: yellow;
+
+        }
+
+    </style>
+
+    <script>
+
+        $(document).ready(function() {
+
+            $('#usernameInput').focus();
+
+            $(document).keypress(function(e) {
+
+                if (e.keyCode === 13) {
+
+                    if (!$('#registerBtn').is(':disabled')) {
+
+                        $('#registerBtn').click();
+
+                    }   
+
+                }
+
+            });
+
+        });
+
+        $('#usernameInput').keyup(function() {
+
+            if ($("#usernameInput").val().trim() === '') {
+
+                $("#registerBtn").attr('disabled', true)
+                
+            } else {
+                
+                $("#registerBtn").attr('disabled', false)
+
+            }
+
+        });
+
+    </script>
+
+</html>
